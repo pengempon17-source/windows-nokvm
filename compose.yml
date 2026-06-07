@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  windows:
+    image: dockurr/windows
+    container_name: windows
+    environment:
+      USERNAME: "admin"
+      PASSWORD: "admin123"
+      DISK_SIZE: "40G"
+      RAM_SIZE: "8G"
+      CPU_CORES: "4"
+      VERSION: "10" # Diubah menjadi "10" sesuai dokumentasi resmi dockurr
+    ports:
+      - 8006:8006
+      - 3389:3389
+    volumes:
+      - win_data:/storage
+    restart: always
+    stop_grace_period: 2m
+
+volumes:
+  win_data:
